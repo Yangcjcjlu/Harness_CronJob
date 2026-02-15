@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: K8S-cronjob-infra
+  identifier: K8Scronjobinfra
+  orgIdentifier: default
+  projectIdentifier: default_project
+  environmentRef: Dev
+  deploymentType: NativeHelm
+  type: KubernetesDirect
+  spec:
+    connectorRef: k8sconnector
+    namespace: k8s-cron-job-ns
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
