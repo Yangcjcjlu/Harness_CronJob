@@ -1,0 +1,5 @@
+service:
+  name: cronService
+  identifier: cronService
+  orgIdentifier: default
+  projectIdentifier: default_project
