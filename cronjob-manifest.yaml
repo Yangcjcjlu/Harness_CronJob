@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cron-task  # 你的任务名称
+spec:
+  schedule: "0 2 * * *" # 每天凌晨 2:00 运行 (Cron 格式)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: worker-container
+            image: <+artifact.image> # 特殊占位符：Harness 会自动填入你选好的镜像
+            command: ["/bin/sh", "-c", "echo 'Hello, task is running!'"]
+          restartPolicy: OnFailure # 如果失败了，K8s 会尝试重启
