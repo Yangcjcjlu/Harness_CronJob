@@ -4,12 +4,12 @@ metadata:
   name: my-cron-task  # 你的任务名称
 spec:
   schedule: "0 2 * * *" # 每天凌晨 2:00 运行 (Cron 格式)
+  successfulJobsHistoryLimit: 1  # 只保留 1 个成功记录
+  failedJobsHistoryLimit: 1      # 只保留 1 个失败记录        
   jobTemplate:
     spec:
       template:
         spec:
-          successfulJobsHistoryLimit: 1  # 只保留 1 个成功记录
-          failedJobsHistoryLimit: 1      # 只保留 1 个失败记录
           containers:
           - name: worker-container
             image: <+artifact.image> # 特殊占位符：Harness 会自动填入你选好的镜像
