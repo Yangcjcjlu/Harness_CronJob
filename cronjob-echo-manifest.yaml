@@ -3,3 +3,23 @@ service:
   identifier: echoService
   orgIdentifier: default
   projectIdentifier: default_project
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: cronjob
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: ycj_gitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - cronjob-manifest.yaml
+                  repoName: Harness_CronJob
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: false
+    type: Kubernetes
