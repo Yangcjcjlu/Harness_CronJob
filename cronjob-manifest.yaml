@@ -12,4 +12,4 @@ spec:
           - name: worker-container
             image: <+artifact.image> # 特殊占位符：Harness 会自动填入你选好的镜像
             command: ["/bin/sh", "-c", "echo 'Hello, task is running!'"]
-          restartPolicy: OnFailure # 如果失败了，K8s 会尝试重启
+          restartPolicy: OnFailure # 如果失败了，K8s 会尝试重启 
