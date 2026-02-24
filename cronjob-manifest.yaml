@@ -8,6 +8,8 @@ spec:
     spec:
       template:
         spec:
+          successfulJobsHistoryLimit: 1  # 只保留 1 个成功记录
+          failedJobsHistoryLimit: 1      # 只保留 1 个失败记录
           containers:
           - name: worker-container
             image: <+artifact.image> # 特殊占位符：Harness 会自动填入你选好的镜像
