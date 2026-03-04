@@ -8,18 +8,19 @@ service:
       manifests:
         - manifest:
             identifier: cronjob
-            type: K8sManifest
+            type: HelmChart
             spec:
               store:
                 type: Github
                 spec:
                   connectorRef: ycj_gitconnector
                   gitFetchType: Branch
-                  paths:
-                    - cronjob-manifest.yaml
+                  folderPath: charts/cronjob
                   repoName: Harness_CronJob
                   branch: main
+              chartName: cronjob-chart
+              chartVersion: 1.0.0
+              helmVersion: V3
               skipResourceVersioning: false
               enableDeclarativeRollback: false
-              optionalValuesYaml: false
-    type: Kubernetes
+    type: NativeHelm
